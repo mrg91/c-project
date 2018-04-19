@@ -7,10 +7,16 @@
 
 #include "game.h"
 
-
-void createSeq() {
+void init() { 
+	DDRB = 0x00;
+	DDRA = 0xff;
+	
+}
+int createSeq(int* a, int* size) {
+	
 }
 bool compare(int* a, int* b) {
 }
+
 void addUserSequence() {
 }
