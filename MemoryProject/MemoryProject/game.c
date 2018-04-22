@@ -13,6 +13,8 @@
 int lower = 1;
 int upper = 8;
 int tracker = 0;
+
+int Value[upper+1] = { 11111110,11111101,11111011,11110111,11101111,11011111,10111111,01111111 }
 void init() { 
 	DDRB = 0x00;
 	DDRA = 0xff;
@@ -23,8 +25,9 @@ void init() {
 void createSeq(int* a, int size) {
 	int i;
 	srand(time(0));
-	for(i = 0; i<size; i++)  
-       a[i] = rand()%upper + lower;
+	for(i = 0; i<size; i++) 
+	int randomIndex = rand() %8 ; 
+       a[i] = Value[randomIndex]; //rand()%upper + lower;
 }
 
 bool compare(int* Seq, int* UserSeq, int size) { //, int BtnUser) {
