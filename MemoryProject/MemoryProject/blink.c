@@ -25,9 +25,8 @@ while(1) //infinite loop
 	_delay_ms(500); //½ second delay
 	PORTA = 0x00; //Turns OFF All LEDs
 	_delay_ms(500); //½ second delay
-	startGame++;
 	
-	PORTA = 0FF;
+	PORTA = 0xFF;
 	return 0;
 }
 	
@@ -62,10 +61,21 @@ void win()
 void end() {
 
 }
-void makeLedBlinking(int a) {
-	_delay_ms(1000); //½ second delay
-	PORTA = a;
-	_delay_ms(1000); //½ second delay
-	PORTA = 0xff;
-	_delay_ms(1000); //½ second delay
+
+/* DDRA and makeLedBlink need DDRA, although everything will be initialized by the end
+int main(void)
+{
+	DDRA = 0xFF;
+	makeLedBlink(3);
+}*/
+
+
+void makeLedBlinking(int a)
+{
+	PORTA = 0xFF;
+	_delay_ms(1000); //1 second delay
+	PORTA = ~a;
+	_delay_ms(1000); //1 second delay
+	PORTA = 0xFF;
+	_delay_ms(1000); //1 second delay
 }
