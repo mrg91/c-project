@@ -63,5 +63,9 @@ void end() {
 
 }
 void makeLedBlinking(int a) {
+	_delay_ms(1000); //½ second delay
 	PORTA = a;
+	_delay_ms(1000); //½ second delay
+	PORTA = 0xff;
+	_delay_ms(1000); //½ second delay
 }
