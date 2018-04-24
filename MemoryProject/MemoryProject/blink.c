@@ -23,14 +23,17 @@ void start() {
 
 //while(1) //infinite loop
 //{
-	for(int i = 0; i < 3; i++)
+	for(int i = 0; i < 7; i++)
 	{
 		PORTA = 0xFF; //Turns ON All LEDs
-		_delay_ms(500); //½ second delay
+		_delay_ms(60); //½ second delay
 		PORTA = 0x00; //Turns OFF All LEDs
-		_delay_ms(500); //½ second delay
+		_delay_ms(60); //½ second delay
 		startGame++;
 	}
+	
+	PORTA = 0xFF;
+	return 0;
 	
 	PORTA = 0xFF;
 	return 0;
@@ -41,26 +44,35 @@ void badAnswer() {
 	
 	DDRA = 0xFF; //makes PORTA as Output
 	int mistake = 0;
-	while(1)
+	
+	for(int i = 0; i < 3; i++)
 	{
-		for(int i = 0; i < 7; i++)
-		{
-			PORTA = 0xFF; //Turns ON All LEDs
-			_delay_ms(60); //½ second delay
-			PORTA = 0x00; //Turns OFF All LEDs
-			_delay_ms(60); //½ second delay
-			mistake++;
-		}
-		
-		PORTA = 0xFF;
-		return 0;
+		PORTA = 0xFF; //Turns ON All LEDs
+		_delay_ms(500); //½ second delay
+		PORTA = 0x00; //Turns OFF All LEDs
+		_delay_ms(500); //½ second delay
+		mistake++;
 	}
 	
+	PORTA = 0xFF;
+	return 0;
 }
+
+
 void win() 
 {
 	int i;
 	DDRA = 0xFF;
+	
+	for (int j = 0; j < 3; j++)
+	{
+		DDRA = 0xff;
+		_delay_ms(200);
+		PORTA = 0xff;
+		_delay_ms(200);
+		PORTA = 0x00;
+	}
+	
 	//while(1)
 	//{
 		for (i=0; i <= 7; i++)
@@ -82,20 +94,20 @@ void win()
 
 void end() 
 {
-	for (int k = 0; k < 3; k++) 
-	{
-	DDRA = 0xff;
-	_delay_ms(200);
-	PORTA = 0xff;
-	_delay_ms(200);
-	PORTA = 0x00;
-	}
-	for (int j = 0; j < 2; j++) {
-	for (int i = 10; i >= 0; i--) {
+		for (int k = 0; k < 3; k++) 
+		{
+		DDRA = 0xff;
+		_delay_ms(200);
+		PORTA = 0xff;
+		_delay_ms(200);
+		PORTA = 0x00;
+		}
+		for (int j = 0; j < 2; j++) {
+		for (int i = 10; i >= 0; i--) {
 
-		PORTA = ~(Value[i]); // (Value1[i]);
-		_delay_ms(250);
-	}
+			PORTA = ~(Value[i]); // (Value1[i]);
+			_delay_ms(250);
+		}
 }
 
 /* DDRA and makeLedBlink need DDRA, although everything will be initialized by the end
