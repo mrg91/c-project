@@ -34,19 +34,35 @@ void start() {
 	
 	PORTA = 0xFF;
 	return 0;
-//}
-	
+//}	
 }
+
 void badAnswer() {
+	
+	DDRA = 0xFF; //makes PORTA as Output
+	int mistake = 0;
+	while(1)
+	{
+		for(int i = 0; i < 7; i++)
+		{
+			PORTA = 0xFF; //Turns ON All LEDs
+			_delay_ms(60); //½ second delay
+			PORTA = 0x00; //Turns OFF All LEDs
+			_delay_ms(60); //½ second delay
+			mistake++;
+		}
+		
+		PORTA = 0xFF;
+		return 0;
+	}
 	
 }
 void win() 
 {
 	int i;
 	DDRA = 0xFF;
-	int winGame = 0;
-	while(1)
-	{
+	//while(1)
+	//{
 		for (i=0; i <= 7; i++)
 		{
 			PORTA = (1 << i); // Shifting LEDS = 0-7 (left)
@@ -61,11 +77,13 @@ void win()
 		
 		PORTA = 0xFF;
 		return 0;
-	}			
-
+	//}			
 }
-void end() {
-		for (int k = 0; k < 3; k++) {
+
+void end() 
+{
+	for (int k = 0; k < 3; k++) 
+	{
 	DDRA = 0xff;
 	_delay_ms(200);
 	PORTA = 0xff;
