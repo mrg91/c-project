@@ -21,8 +21,8 @@ void start() {
 	DDRA = 0xFF; //makes PORTA as Output
 	int startGame = 0;
 
-while(1) //infinite loop
-{
+//while(1) //infinite loop
+//{
 	for(int i = 0; i < 3; i++)
 	{
 		PORTA = 0xFF; //Turns ON All LEDs
@@ -34,7 +34,7 @@ while(1) //infinite loop
 	
 	PORTA = 0xFF;
 	return 0;
-}
+//}
 	
 }
 void badAnswer() {
