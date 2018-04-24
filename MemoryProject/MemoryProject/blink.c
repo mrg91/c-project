@@ -14,6 +14,8 @@
 
 #include "blink.h"
 
+int Value[10] = { 0b00000000, 0b11111110, 0b11111101, 0b11111011, 0b11110111, 0b11101111, 0b11011111, 0b10111111, 0b01111111, 0b11111111};
+
 void start() {
 	
 	DDRA = 0xFF; //makes PORTC as Output
@@ -59,7 +61,19 @@ void win()
 
 }
 void end() {
+		for (int k = 0; k < 3; k++) {
+	DDRA = 0xff;
+	_delay_ms(200);
+	PORTA = 0xff;
+	_delay_ms(200);
+	PORTA = 0x00;
+	}
+	for (int j = 0; j < 2; j++) {
+	for (int i = 10; i >= 0; i--) {
 
+		PORTA = ~(Value[i]); // (Value1[i]);
+		_delay_ms(250);
+	}
 }
 
 /* DDRA and makeLedBlink need DDRA, although everything will be initialized by the end
