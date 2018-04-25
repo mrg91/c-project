@@ -4,17 +4,21 @@
  * Created: 19/04/2018 09:20:34
  *  Author: marega
  */ 
- #ifndef F_CPU
+
+#ifndef F_CPU
 #define F_CPU 10000000UL // 10 MHz clock speed
 #endif
 
-
+#include <stdio.h>
+#include <stdlib.h>
 #include <avr/io.h>
 #include <util/delay.h>
-
+#include "atmega2560_drivers.h"
 #include "blink.h"
 
-int Value[10] = { 0b00000000, 0b11111110, 0b11111101, 0b11111011, 0b11110111, 0b11101111, 0b11011111, 0b10111111, 0b01111111, 0b11111111};
+int valueSe[8] = { 0b11111110, 0b11111101, 0b11111011, 0b11110111, 0b11101111, 0b11011111, 0b10111111, 0b01111111};
+int value[10] = { 0b00000000, 0b11111110, 0b11111101, 0b11111011, 0b11110111, 0b11101111, 0b11011111, 0b10111111, 0b01111111, 0b11111111};
+int a;
 
 void start() {
 	
@@ -23,7 +27,7 @@ void start() {
 
 //while(1) //infinite loop
 //{
-	for(int i = 0; i < 7; i++)
+	for(int i = 0; i < 8; i++)
 	{
 		PORTA = 0xFF; //Turns ON All LEDs
 		_delay_ms(60); //½ second delay
@@ -33,10 +37,8 @@ void start() {
 	}
 	
 	PORTA = 0xFF;
-	return 0;
+	return;
 	
-	PORTA = 0xFF;
-	return 0;
 //}	
 }
 
@@ -55,7 +57,7 @@ void badAnswer() {
 	}
 	
 	PORTA = 0xFF;
-	return 0;
+	return;
 }
 
 
@@ -88,7 +90,7 @@ void win()
 		}
 		
 		PORTA = 0xFF;
-		return 0;
+		return;
 	//}			
 }
 
@@ -105,13 +107,14 @@ void end()
 		for (int j = 0; j < 2; j++) {
 		for (int i = 10; i >= 0; i--) {
 
-			PORTA = ~(Value[i]); // (Value1[i]);
+			PORTA = ~(value[i]); // (Value1[i]);
 			_delay_ms(250);
 		}
 }
+}
 
 /* DDRA and makeLedBlink need DDRA, although everything will be initialized by the end
-int main(void)
+int maikkn(void)
 {
 	DDRA = 0xFF;
 	makeLedBlink(3);
@@ -126,4 +129,5 @@ void makeLedBlinking(int a)
 	_delay_ms(1000); //1 second delay
 	PORTA = 0xFF;
 	_delay_ms(1000); //1 second delay
+	return;
 }

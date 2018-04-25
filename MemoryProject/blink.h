@@ -1,4 +1,4 @@
-#ifndef __blink_h__
+/*#ifndef __blink_h__
 #define __blink_h__
 
 void start();
@@ -7,4 +7,4 @@ void win();
 void end();
 void makeLedBlinking(int a);
 
-#endif 
+#endif */

@@ -1,10 +1,11 @@
-#ifndef __game_h__
+/*#ifndef __game_h__
 #define __game_h__
 
 void init();
-int createSeq();
-bool compare(int* a, int* b);
-void addUserSequence();
+void createSeq(int* a, int size);
+void compare(int* Seq, int* UserSeq, int size);
+void addUserSequence(int* tab, int value, int size);
+void sameSeq(int* Seq, int* UserSeq, int n);
 
 
-#endif 
+#endif */
