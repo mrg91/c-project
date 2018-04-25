@@ -4,7 +4,7 @@
 void init();
 void createSeq(int *Seq, int size);
 void compare(int *Seq, int *UserSeq, int size);
-void addUserSequence(int *tab, int value, int size);
+void addUserSequence(int *tab, int *Seq, int value, int size);
 void sameSeq(int *Seq, int *UserSeq, int n);
 
 

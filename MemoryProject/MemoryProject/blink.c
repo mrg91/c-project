@@ -124,10 +124,10 @@ int maikkn(void)
 void makeLedBlinking(int a)
 {
 	PORTA = 0xFF;
-	_delay_ms(1000); //1 second delay
+	_delay_ms(400); //1 second delay
 	PORTA = a;
-	_delay_ms(1000); //1 second delay
+	_delay_ms(400); //1 second delay
 	PORTA = 0xFF;
-	_delay_ms(1000); //1 second delay
+//	_delay_ms(400); //1 second delay
 	return;
 }

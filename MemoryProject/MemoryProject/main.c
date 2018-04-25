@@ -25,28 +25,23 @@ int i = 0;
 int f;
 int main(void)
 {
+	
+	
  //   while (1) 
  //   {
 		
-	//	init();
+		init();
+		_delay_ms(1000);
 		start();
+		_delay_ms(1000);
+		srand(time(NULL));
 		createSeq(Seq, size);
-		
+		_delay_ms(1000);
+		//compare(Seq,UserSeq, size);
 		while (i < size) {
-		//	PORTA =  0b01111111;
-		//	_delay_ms(3000);
-			f = Seq[i];
-			makeLedBlinking(f);
-			i++;
-		}
-		
-	/*	for (int i = 0; i <= size; i++) {
 			makeLedBlinking(Seq[i]);
 			compare(Seq,UserSeq, size);
-		}*/
-		
-		
-			
- //   }
+			i++;
+		}
 }
 

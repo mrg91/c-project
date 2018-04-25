@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <time.h> 
 #include <avr/io.h>
+#include <util/delay.h>
 #include "atmega2560_drivers.h"
 #include "game.h"
 #include "blink.h"
@@ -24,28 +25,30 @@ int size = 8;
 void init() { 
 	DDRB = 0x00;
 	DDRA = 0xff;
-	
 }
 
 
 void createSeq(int *Seq, int size) {
 	int i;
 	int randomIndex = 0;
-	srand(time(NULL));
-	for(i = 0; i<size; i++) 
-	randomIndex = (rand()%8); 
+	for(i = 0; i<size; i++) {
+		randomIndex = (rand()%8); 
        Seq[i] = ValueSeq[randomIndex]; //rand()%upper + lower;
+	} 
+	
 }
 
 void compare(int *Seq, int *UserSeq, int size) { //, int BtnUser) {
 	int BtnUsr;
 	BtnUsr = 0;
+	//makeLedBlinking(Seq[tracker]);
+	
 	while (PINB == 0xff) {
 		 BtnUsr = 0;
 	}
 	BtnUsr = PINB;
 	if (Seq[tracker] == BtnUsr) {
-		addUserSequence(UserSeq,BtnUsr, size);
+		addUserSequence(UserSeq, Seq, BtnUsr, size);
 		return;
 	//	sameSeq(Seq,UserSeq,size);
 		//return true;
@@ -57,34 +60,42 @@ void compare(int *Seq, int *UserSeq, int size) { //, int BtnUser) {
 //	return false;
 }
 
-void addUserSequence(int *tab, int value, int size) {
+void addUserSequence(int *tab, int *Seq, int value, int size) {
+	
+	if (tracker == size-1) {
+		tab[tracker] = value;
+		sameSeq(Seq,tab,size);
+		return;
+	}
+	
 	if (tracker < size) {
 		tab[tracker] = value;
 		tracker++;
 		return;
-		}
-	else
-	sameSeq(ValueSeq,tab,size);
-	return;
+	}
+	
+	
+		
 	
 }
 
-void sameSeq(int *Seq, int *UserSeq, int n) {
+void sameSeq(int *Seq, int *tab, int n) {
 	int c;
 	int i;
 	c = 1;
 	for(i=0;i<n;i++){
-		if(ValueSeq[i] != UserSeq[i])
-		c = 0;
+		if(Seq[i] != tab[i]) {
+				c = 0;
+		}
 	}
-	if(c == 1 && i == n-1) {
+	if(c == 1) {
 		win();
 		end();
 		return;
 	}
-	else {
+//	else {
 		end();
 		return;
-		}
+	//	}
 	}
 	
