@@ -15,6 +15,7 @@
 #include "game.h"
 
 
+
 #define size 8
 
 //int size = 8;
@@ -25,11 +26,7 @@ int i = 0;
 int f;
 int main(void)
 {
-	
-	
- //   while (1) 
- //   {
-		
+			
 		init();
 		_delay_ms(1000);
 		start();

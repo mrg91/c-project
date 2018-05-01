@@ -30,9 +30,9 @@ void start() {
 	for(int i = 0; i < 8; i++)
 	{
 		PORTA = 0xFF; //Turns ON All LEDs
-		_delay_ms(60); //½ second delay
+		_delay_ms(60); //0.06 second delay
 		PORTA = 0x00; //Turns OFF All LEDs
-		_delay_ms(60); //½ second delay
+		_delay_ms(60); //0.06 second delay
 		startGame++;
 	}
 	
@@ -124,10 +124,10 @@ int maikkn(void)
 void makeLedBlinking(int a)
 {
 	PORTA = 0xFF;
-	_delay_ms(400); //1 second delay
+	_delay_ms(400); //0.4 second delay
 	PORTA = a;
-	_delay_ms(400); //1 second delay
+	_delay_ms(400); //0.4 second delay
 	PORTA = 0xFF;
-//	_delay_ms(400); //1 second delay
+//	_delay_ms(400); //0.4 second delay
 	return;
 }
